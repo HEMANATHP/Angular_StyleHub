@@ -1,0 +1,112 @@
+﻿<div class="page-shell">
+  <header class="topbar">
+    <div class="brand-wrap">
+      <div class="brand-mark">SH</div>
+      <span class="brand-name">StyleHub</span>
+    </div>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      @for (item of navItems; track item) {
+        <a href="#" class="nav-link">{{ item }}</a>
+      }
+    </nav>
+
+    <button class="primary-button" type="button">Book now</button>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="hero-copy">
+        <p class="eyebrow">Grooming and style marketplace</p>
+        <h1>Find your next look with confidence.</h1>
+        <p class="lead">
+          Discover nearby salons, trusted stylists, and premium grooming essentials in one smart platform.
+        </p>
+
+        <div class="cta-row">
+          <button class="primary-button" type="button">Explore shops</button>
+          <button class="secondary-button" type="button">Become a vendor</button>
+        </div>
+
+        <div class="stats-grid">
+          @for (stat of stats; track stat.label) {
+            <div class="stat-card">
+              <strong>{{ stat.value }}</strong>
+              <span>{{ stat.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="hero-panel" aria-label="Marketplace overview">
+        <div class="panel-card top-card">
+          <span class="panel-label">Today's best match</span>
+          <h2>Urban Groom Studio</h2>
+          <p>4.9 rating • 12 mins away • Open now</p>
+        </div>
+
+        <div class="mini-grid">
+          <div class="mini-card accent">
+            <span class="mini-label">Popular service</span>
+            <strong>Haircut + Beard Trim</strong>
+            <small>$59</small>
+          </div>
+          <div class="mini-card">
+            <span class="mini-label">Available stylists</span>
+            <strong>8 experts</strong>
+            <small>Ready today</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <div class="section-heading">
+        <p class="eyebrow">Why StyleHub</p>
+        <h2>Everything you need for a polished grooming routine.</h2>
+      </div>
+
+      <div class="feature-grid">
+        @for (feature of featurePoints; track feature.title) {
+          <article class="feature-card">
+            <div class="icon-badge">✓</div>
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.text }}</p>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="services-section">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Featured services</p>
+          <h2>Popular grooming experiences</h2>
+        </div>
+        <a href="#" class="text-link">View all services</a>
+      </div>
+
+      <div class="service-grid">
+        @for (service of serviceCards; track service.title) {
+          <article class="service-card">
+            <span class="service-tag">Top pick</span>
+            <h3>{{ service.title }}</h3>
+            <p>{{ service.description }}</p>
+            <div class="service-footer">
+              <strong>{{ service.price }}</strong>
+              <button type="button">Book</button>
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <p class="brand-name">StyleHub</p>
+      <small>Upgrade your grooming experience.</small>
+    </div>
+    <a href="#">Contact support</a>
+  </footer>
+</div>
