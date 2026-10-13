@@ -1,9 +1,9 @@
-﻿:host {
+:host {
   display: block;
   min-height: 100vh;
   background: linear-gradient(180deg, #fffaf7 0%, #fff 100%);
   color: #1f2937;
-  font-family: Inter, "Segoe UI", sans-serif;
+  font-family: Inter, 'Segoe UI', sans-serif;
 }
 
 * {
@@ -48,7 +48,7 @@ a {
   display: grid;
   place-items: center;
   border-radius: 14px;
-  background: linear-gradient(135deg, #f97316, #ec4899);
+  background: linear-gradient(135deg, #b83f0d, #b51b66);
   color: white;
   font-weight: 800;
 }
@@ -67,30 +67,28 @@ a {
 }
 
 .nav-link,
-.site-footer a,
-.text-link {
+.site-footer a {
   color: #4b5563;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .nav-link:hover,
-.site-footer a:hover,
-.text-link:hover {
+.site-footer a:hover {
   color: #111827;
 }
 
-.primary-button,
-.secondary-button,
-.service-footer button {
+.primary-button {
   border: none;
   border-radius: 999px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .primary-button {
-  background: linear-gradient(135deg, #f97316, #ec4899);
+  background: linear-gradient(135deg, #b83f0d, #b51b66);
   color: white;
   padding: 12px 20px;
   font-weight: 700;
@@ -106,244 +104,14 @@ a {
   color: #9a3412;
 }
 
-.primary-button:hover,
-.secondary-button:hover,
-.service-footer button:hover {
+.primary-button:hover {
   transform: translateY(-1px);
 }
 
-.secondary-button {
-  background: white;
-  color: #111827;
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  padding: 12px 20px;
-  font-weight: 600;
-}
-
-.hero-section {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 40px;
-  align-items: center;
-  padding: 64px 0 36px;
-}
-
-.eyebrow {
-  margin: 0 0 16px;
-  color: #f97316;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.72rem;
-  font-weight: 800;
-}
-
-.hero-copy h1,
-.section-heading h2 {
-  margin: 0;
-  color: #111827;
-  letter-spacing: -0.06em;
-  line-height: 1.05;
-}
-
-.hero-copy h1 {
-  font-size: clamp(2.8rem, 5vw, 5rem);
-  max-width: 620px;
-}
-
-.lead {
-  margin-top: 18px;
-  max-width: 620px;
-  font-size: 1.08rem;
-  line-height: 1.7;
-  color: #4b5563;
-}
-
-.cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 28px;
-}
-
-.stats-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-top: 32px;
-}
-
-.stat-card {
-  min-width: 150px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(17, 24, 39, 0.08);
-  border-radius: 18px;
-  padding: 18px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.stat-card strong {
-  font-size: 1.55rem;
-  color: #111827;
-}
-
-.stat-card span {
-  color: #6b7280;
-  font-size: 0.9rem;
-}
-
-.hero-panel {
-  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
-  border-radius: 30px;
-  padding: 24px;
-  color: white;
-  box-shadow: 0 28px 40px rgba(17, 24, 39, 0.2);
-}
-
-.panel-card {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 22px;
-  padding: 22px;
-}
-
-.panel-label,
-.mini-label,
-.service-tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.top-card h2 {
-  margin: 12px 0 8px;
-  font-size: 1.7rem;
-}
-
-.top-card p,
-.mini-card small {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.mini-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-top: 18px;
-}
-
-.mini-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.mini-card.accent {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.9), rgba(236, 72, 153, 0.9));
-}
-
-.mini-card strong {
-  font-size: 1.1rem;
-}
-
-.info-section,
-.services-section {
-  padding-top: 40px;
-}
-
-.section-heading {
-  margin-bottom: 28px;
-}
-
-.section-heading h2 {
-  max-width: 600px;
-  font-size: clamp(2rem, 3vw, 3rem);
-}
-
-.inline-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 28px;
-}
-
-.feature-grid,
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.feature-card,
-.service-card {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 24px;
-  padding: 24px;
-}
-
-.icon-badge {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #fff1eb, #ffe3f1);
-  color: #f97316;
-  font-weight: 800;
-  margin-bottom: 18px;
-}
-
-.feature-card h3,
-.service-card h3 {
-  margin: 0 0 12px;
-  color: #111827;
-  font-size: 1.3rem;
-}
-
-.feature-card p,
-.service-card p,
 .site-footer small {
   margin: 0;
   color: #6b7280;
   line-height: 1.7;
-}
-
-.service-card {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.service-tag {
-  color: #f97316;
-}
-
-.service-footer {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.service-footer strong {
-  color: #111827;
-  font-size: 1.1rem;
-}
-
-.service-footer button {
-  background: #111827;
-  color: white;
-  padding: 10px 16px;
 }
 
 .site-footer {
@@ -356,37 +124,58 @@ a {
   padding-top: 20px;
 }
 
+.brand-wrap {
+  color: inherit;
+  text-decoration: none;
+}
+.nav-link.active {
+  color: #9a3412;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.upcoming-page {
+  color: #6b7280;
+}
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 0;
+  transform: translateY(-150%);
+  z-index: 3;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #9a3412;
+  outline-offset: 4px;
+}
+main:focus {
+  outline: none;
+}
 @media (max-width: 900px) {
-  .hero-section,
-  .feature-grid,
-  .service-grid {
-    grid-template-columns: 1fr;
-  }
-
   .topbar,
-  .inline-heading,
   .site-footer {
     flex-direction: column;
     align-items: flex-start;
   }
 }
-
 @media (max-width: 600px) {
   .page-shell {
     width: min(100% - 20px, 1200px);
   }
-
   .topbar {
     padding: 14px 16px;
   }
-
   .main-nav {
     gap: 12px;
     justify-content: flex-start;
     width: 100%;
-  }
-
-  .hero-section {
-    padding-top: 36px;
   }
 }
