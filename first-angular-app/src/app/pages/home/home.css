@@ -33,6 +33,9 @@ a {
 }
 
 .primary-button {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
   background: linear-gradient(135deg, #9a3412, #b51b66);
   color: white;
   padding: 12px 20px;

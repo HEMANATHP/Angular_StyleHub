@@ -1,0 +1,129 @@
+<section class="marketplace-page" aria-labelledby="marketplace-heading">
+  <header class="marketplace-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">The StyleHub edit</p>
+      <h1 id="marketplace-heading">Good hair days start here.</h1>
+      <p>
+        Shop considered essentials for your hair, beard, and everyday styling routine from brands
+        we love.
+      </p>
+      <a class="hero-link" href="#shop-products">Explore the edit <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="hero-bottle">
+        <span>ROOT<br />RITUAL</span>
+      </div>
+      <div class="hero-jar">
+        <span>FORM<br />&amp; FIELD</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="benefit-row" aria-label="Shopping benefits">
+    <p><span aria-hidden="true">✦</span> Curated grooming essentials</p>
+    <p><span aria-hidden="true">↗</span> Independent brands</p>
+    <p><span aria-hidden="true">♡</span> Made for your routine</p>
+  </section>
+
+  <section id="shop-products" class="product-section" aria-labelledby="products-heading">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Shop the collection</p>
+        <h2 id="products-heading">Your everyday essentials</h2>
+        <p class="section-intro">Thoughtful formulas and reliable favorites, all in one place.</p>
+      </div>
+      <div class="bag-count" aria-live="polite">
+        <span aria-hidden="true">♧</span>
+        <span>My bag</span>
+        <strong>{{ bagCount() }}</strong>
+      </div>
+    </div>
+
+    <div class="catalog-tools">
+      <div class="category-list" aria-label="Filter products by category">
+        @for (category of categories; track category) {
+          <button
+            type="button"
+            class="category-button"
+            [class.selected]="selectedCategory() === category"
+            [attr.aria-pressed]="selectedCategory() === category"
+            (click)="selectCategory(category)"
+          >
+            {{ category }}
+          </button>
+        }
+      </div>
+      <label class="search-box">
+        <span class="visually-hidden">Search products</span>
+        <span aria-hidden="true">⌕</span>
+        <input
+          type="search"
+          placeholder="Search products"
+          [value]="searchTerm()"
+          (input)="updateSearch($event)"
+        />
+      </label>
+    </div>
+
+    <p class="result-count" aria-live="polite">
+      Showing {{ filteredProducts().length }} {{ filteredProducts().length === 1 ? 'product' :
+      'products' }}
+    </p>
+
+    @if (filteredProducts().length > 0) {
+      <div class="product-grid">
+        @for (product of filteredProducts(); track product.id) {
+          <article class="product-card">
+            <div
+              class="product-art"
+              [style.--product-tone]="product.tone"
+              [class.product-art--jar]="product.productShape === 'jar'"
+              [class.product-art--tube]="product.productShape === 'tube'"
+              [attr.aria-label]="product.name + ' product illustration'"
+              role="img"
+            >
+              @if (product.badge) {
+                <span class="product-badge">{{ product.badge }}</span>
+              }
+              <span class="product-shadow"></span>
+              <span class="product-package">
+                <span class="package-cap"></span>
+                <span class="package-label">{{ product.brand }}</span>
+              </span>
+              <span class="product-category">{{ product.category }}</span>
+            </div>
+
+            <div class="product-details">
+              <p class="product-brand">{{ product.brand }}</p>
+              <h3>{{ product.name }}</h3>
+              <p class="product-description">{{ product.description }}</p>
+              <p class="product-rating">
+                <span aria-hidden="true">★</span> {{ product.rating }}
+                <span class="review-count">({{ product.reviews }} reviews)</span>
+              </p>
+              <div class="product-footer">
+                <strong>${{ product.price }}</strong>
+                <button
+                  type="button"
+                  class="add-button"
+                  [attr.aria-label]="'Add ' + product.name + ' to bag'"
+                  (click)="addToBag()"
+                >
+                  Add to bag <span aria-hidden="true">+</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    } @else {
+      <div class="empty-state">
+        <span aria-hidden="true">⌕</span>
+        <h3>No products found</h3>
+        <p>Try another search term or choose a different category.</p>
+      </div>
+    }
+
+    <p class="sample-note">Sample products and prices for this frontend preview.</p>
+  </section>
+</section>

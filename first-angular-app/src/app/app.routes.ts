@@ -12,4 +12,15 @@ export const routes: Routes = [
     title: 'Services | StyleHub',
     loadComponent: () => import('./pages/services/services').then((module) => module.Services),
   },
+  {
+    path: 'stylists',
+    title: 'Stylists | StyleHub',
+    loadComponent: () => import('./pages/stylists/stylists').then((module) => module.Stylists),
+  },
+  {
+    path: 'marketplace',
+    title: 'Marketplace | StyleHub',
+    loadComponent: () =>
+      import('./pages/marketplace/marketplace').then((module) => module.Marketplace),
+  },
 ];

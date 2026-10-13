@@ -1,19 +1,40 @@
 <div class="page-shell">
   <a class="skip-link" href="#page-content">Skip to main content</a>
 
-  <header class="topbar">
-    <a class="brand-wrap" routerLink="/" aria-label="StyleHub home">
+  <header class="topbar" (keydown.escape)="closeMobileMenu()">
+    <a class="brand-wrap" routerLink="/" aria-label="StyleHub home" (click)="closeMobileMenu()">
       <span class="brand-mark" aria-hidden="true">SH</span>
       <span class="brand-name">StyleHub</span>
     </a>
 
-    <nav class="main-nav" aria-label="Main navigation">
+    <button
+      class="menu-toggle"
+      type="button"
+      [attr.aria-expanded]="mobileMenuOpen()"
+      aria-controls="main-navigation"
+      [attr.aria-label]="mobileMenuOpen() ? 'Close navigation' : 'Open navigation'"
+      (click)="toggleMobileMenu()"
+    >
+      <span class="menu-icon" [class.menu-icon-open]="mobileMenuOpen()" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <nav
+      id="main-navigation"
+      class="main-nav"
+      [class.mobile-menu-open]="mobileMenuOpen()"
+      aria-label="Main navigation"
+    >
       <a
         routerLink="/"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
         ariaCurrentWhenActive="page"
         class="nav-link"
+        (click)="closeMobileMenu()"
         >Home</a
       >
       <a
@@ -21,14 +42,38 @@
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
         class="nav-link"
+        (click)="closeMobileMenu()"
         >Services</a
       >
-      @for (item of upcomingPages; track item) {
-        <span class="upcoming-page" title="Coming soon">{{ item }}</span>
-      }
+      <a
+        routerLink="/stylists"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="nav-link"
+        (click)="closeMobileMenu()"
+        >Stylists</a
+      >
+      <a
+        routerLink="/marketplace"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="nav-link"
+        (click)="closeMobileMenu()"
+        >Marketplace</a
+      >
+      <span class="upcoming-page" title="Coming soon">Bookings</span>
+      <button
+        class="primary-button mobile-book-button"
+        type="button"
+        (click)="bookNow(); closeMobileMenu()"
+      >
+        Book now
+      </button>
     </nav>
 
-    <button class="primary-button" type="button" (click)="bookNow()">Book now</button>
+    <button class="primary-button desktop-book-button" type="button" (click)="bookNow()">
+      Book now
+    </button>
   </header>
 
   @if (bookingNotice()) {
@@ -36,7 +81,7 @@
   }
 
   <main id="page-content" #pageContent tabindex="-1">
-    <router-outlet (activate)="pageContent.focus()" />
+    <router-outlet (activate)="onRouteActivated(pageContent)" />
   </main>
 
   <footer class="site-footer">
