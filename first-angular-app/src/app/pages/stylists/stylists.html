@@ -1,0 +1,45 @@
+<section class="stylists-page" aria-labelledby="stylists-heading">
+  <a routerLink="/" class="text-link">Back to home</a>
+
+  <header class="page-heading">
+    <p class="eyebrow">Meet the stylists</p>
+    <h1 id="stylists-heading">Find a stylist who gets your style.</h1>
+    <p class="intro">
+      Explore specialties and experience to discover the right professional for your grooming routine.
+    </p>
+    <p class="sample-note">Sample profiles &middot; Appointment availability is coming soon.</p>
+  </header>
+
+  <div class="stylist-grid">
+    @for (stylist of stylists; track stylist.id) {
+      <article class="stylist-card" [attr.aria-labelledby]="'stylist-' + stylist.id">
+        <div class="profile-heading">
+          <span class="avatar" aria-hidden="true">{{ stylist.initials }}</span>
+          <div>
+            <h2 [id]="'stylist-' + stylist.id">{{ stylist.name }}</h2>
+            <p class="role">{{ stylist.role }}</p>
+          </div>
+        </div>
+
+        <p class="location">{{ stylist.shopName }} &middot; {{ stylist.city }}</p>
+        <p class="description">{{ stylist.description }}</p>
+        <p class="experience"><strong>{{ stylist.experienceYears }} years</strong> of experience</p>
+
+        <h3>Specialties</h3>
+        <ul class="specialties">
+          @for (specialty of stylist.specialties; track specialty) {
+            <li>{{ specialty }}</li>
+          }
+        </ul>
+      </article>
+    }
+  </div>
+
+  <aside class="services-prompt" aria-labelledby="services-prompt-heading">
+    <div>
+      <h2 id="services-prompt-heading">Still deciding on your next look?</h2>
+      <p>Browse our grooming services and starting prices before planning your visit.</p>
+    </div>
+    <a routerLink="/services" class="services-link">Explore services</a>
+  </aside>
+</section>

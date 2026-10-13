@@ -9,9 +9,26 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly bookingNotice = signal('');
-  protected readonly upcomingPages = ['Stylists', 'Marketplace', 'Bookings'];
+  protected readonly upcomingPages = ['Marketplace', 'Bookings'];
+  protected readonly mobileMenuOpen = signal(false);
 
   protected bookNow(): void {
     this.bookingNotice.set('Online booking is coming soon. Explore our featured services below!');
+  }
+
+  protected toggleMobileMenu(): void {
+    this.mobileMenuOpen.update((isOpen) => !isOpen);
+  }
+
+  protected closeMobileMenu(): void {
+    this.mobileMenuOpen.set(false);
+  }
+
+  protected onRouteActivated(pageContent: HTMLElement): void {
+    pageContent.focus({ preventScroll: true });
+
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
   }
 }

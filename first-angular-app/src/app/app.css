@@ -33,7 +33,12 @@ a {
   backdrop-filter: blur(12px);
   position: sticky;
   top: 16px;
-  z-index: 2;
+  z-index: 10;
+}
+
+.menu-toggle,
+.mobile-book-button {
+  display: none;
 }
 
 .brand-wrap {
@@ -142,7 +147,7 @@ a {
   left: 16px;
   top: 0;
   transform: translateY(-150%);
-  z-index: 3;
+  z-index: 20;
   padding: 12px 18px;
   border-radius: 8px;
   background: #111827;
@@ -156,26 +161,102 @@ button:focus-visible {
   outline: 3px solid #9a3412;
   outline-offset: 4px;
 }
+
 main:focus {
   outline: none;
 }
+
 @media (max-width: 900px) {
-  .topbar,
   .site-footer {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .topbar {
+    flex-wrap: wrap;
+  }
+
+  .brand-wrap {
+    margin-right: auto;
+  }
+
+  .menu-toggle {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 12px;
+    background: white;
+    color: #292821;
+    cursor: pointer;
+  }
+
+  .menu-icon {
+    width: 20px;
+    display: grid;
+    gap: 5px;
+  }
+
+  .menu-icon span {
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .menu-icon-open span:first-child {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-icon-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-icon-open span:last-child {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .main-nav {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .main-nav.mobile-menu-open {
+    display: flex;
+  }
+
+  .main-nav .nav-link,
+  .upcoming-page {
+    padding: 11px 8px;
+  }
+
+  .main-nav .nav-link.active {
+    text-decoration: none;
+  }
+
+  .desktop-book-button {
+    display: none;
+  }
+
+  .mobile-book-button {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-top: 8px;
+  }
 }
+
 @media (max-width: 600px) {
   .page-shell {
     width: min(100% - 20px, 1200px);
   }
   .topbar {
     padding: 14px 16px;
-  }
-  .main-nav {
-    gap: 12px;
-    justify-content: flex-start;
-    width: 100%;
   }
 }
