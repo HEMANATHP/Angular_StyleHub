@@ -1,0 +1,33 @@
+<section class="services-page" aria-labelledby="services-heading">
+  <a routerLink="/" class="back-link">← Back to home</a>
+
+  <header class="page-heading">
+    <p class="eyebrow">Grooming services</p>
+    <h1 id="services-heading">Find the right service for your next look.</h1>
+    <p class="intro">
+      Explore haircuts, beard grooming, and hair care to find what suits your routine.
+    </p>
+  </header>
+
+  <div class="service-grid">
+    @for (service of services; track service.title) {
+      <article class="service-card">
+        <span class="service-label">Grooming &amp; care</span>
+        <h2>{{ service.title }}</h2>
+        <p>{{ service.description }}</p>
+        <div class="service-price">
+          <span>Starting price</span>
+          <strong>{{ service.price }}</strong>
+        </div>
+      </article>
+    }
+  </div>
+
+  <aside class="booking-information" aria-labelledby="booking-heading">
+    <h2 id="booking-heading">Planning your next appointment?</h2>
+    <p>
+      These are sample services and prices. Shop-specific availability and online booking are coming
+      soon.
+    </p>
+  </aside>
+</section>
