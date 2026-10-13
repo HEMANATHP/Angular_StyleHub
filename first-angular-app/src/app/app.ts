@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './app.html',
 })
 export class App {
+  protected readonly heroTitle = 'Find your next look with confidence.';
+
+  protected readonly bookingNotice = signal('');
+
   protected readonly navItems = ['Home', 'Services', 'Stylists', 'Marketplace', 'Bookings'];
 
   protected readonly featurePoints = [
@@ -47,4 +51,8 @@ export class App {
     { value: '180+', label: 'Partner shops' },
     { value: '4.9/5', label: 'Average rating' },
   ];
+
+  protected bookNow(): void {
+    this.bookingNotice.set('Online booking is coming soon. Explore our featured services below!');
+  }
 }

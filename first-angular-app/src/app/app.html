@@ -11,14 +11,18 @@
       }
     </nav>
 
-    <button class="primary-button" type="button">Book now</button>
+    <button class="primary-button" type="button" (click)="bookNow()">Book now</button>
   </header>
+
+  @if (bookingNotice()) {
+    <p class="booking-notice" role="status">{{ bookingNotice() }}</p>
+  }
 
   <main>
     <section class="hero-section">
       <div class="hero-copy">
         <p class="eyebrow">Grooming and style marketplace</p>
-        <h1>Find your next look with confidence.</h1>
+        <h1>{{ heroTitle }}</h1>
         <p class="lead">
           Discover nearby salons, trusted stylists, and premium grooming essentials in one smart platform.
         </p>
