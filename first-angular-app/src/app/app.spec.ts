@@ -54,7 +54,7 @@ describe('App', () => {
     expect(page.querySelector('h1')?.textContent).toContain('Find your next look with confidence.');
   });
 
-  it('should support direct Services navigation and retain the booking notice', async () => {
+  it('should navigate from Services to customer bookings using Book now', async () => {
     const fixture = TestBed.createComponent(App);
     await TestBed.inject(Router).navigateByUrl('/services');
     await fixture.whenStable();
@@ -63,10 +63,9 @@ describe('App', () => {
     expect(page.querySelector('h1')?.textContent).toContain(
       'Find the right service for your next look.',
     );
-    page.querySelector<HTMLButtonElement>('.topbar button')!.click();
+    page.querySelector<HTMLButtonElement>('.desktop-book-button')!.click();
     await fixture.whenStable();
-    expect(page.querySelector('[role="status"]')?.textContent).toContain(
-      'Online booking is coming soon.',
-    );
+    expect(TestBed.inject(Router).url).toBe('/bookings');
+    expect(page.querySelector('h1')?.textContent).toContain('Your appointments, all in one place.');
   });
 });

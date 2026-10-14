@@ -1,0 +1,52 @@
+<section class="shops-page" aria-labelledby="shops-heading">
+  <a routerLink="/" class="back-link">← Back to home</a>
+
+  <header class="page-heading">
+    <p class="eyebrow">Find your place</p>
+    <h1 id="shops-heading">Good grooming starts with the right shop.</h1>
+    <p class="intro">
+      Explore independent salons and barbershops, see what they offer, and find a place that fits
+      your style.
+    </p>
+  </header>
+
+  <p class="sample-note">Sample shop listings · Shop-specific availability is coming soon.</p>
+
+  <div class="shop-grid">
+    @for (shop of shops; track shop.id) {
+      <article class="shop-card">
+        <div class="shop-art" [class]="'shop-art shop-art--' + shop.theme" aria-hidden="true">
+          <span class="shop-art-mark">{{ shop.initials }}</span>
+          <span class="shop-art-caption">{{ shop.category }}</span>
+        </div>
+
+        <div class="shop-content">
+          <div class="shop-title-row">
+            <div>
+              <p class="shop-location">{{ shop.city }}</p>
+              <h2>{{ shop.name }}</h2>
+            </div>
+            <p class="shop-rating" [attr.aria-label]="shop.rating + ' out of 5 stars'">
+              <span aria-hidden="true">★</span> {{ shop.rating }}
+            </p>
+          </div>
+
+          <p class="review-count">{{ shop.reviewCount }} reviews</p>
+          <p class="shop-description">{{ shop.description }}</p>
+
+          <h3>Popular services</h3>
+          <ul class="service-list">
+            @for (service of shop.services; track service) {
+              <li>{{ service }}</li>
+            }
+          </ul>
+
+          <div class="shop-footer">
+            <p>Services from <strong>${{ shop.startingPrice }}</strong></p>
+            <span class="details-note">Details coming soon</span>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>

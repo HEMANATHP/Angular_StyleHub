@@ -1,4 +1,5 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { ShoppingBag } from '../../services/shopping-bag';
 
 type ProductCategory = 'Hair care' | 'Styling' | 'Beard care';
 
@@ -25,7 +26,8 @@ export class Marketplace {
   protected readonly categories = ['All products', 'Hair care', 'Styling', 'Beard care'] as const;
   protected readonly selectedCategory = signal<(typeof this.categories)[number]>('All products');
   protected readonly searchTerm = signal('');
-  protected readonly bagCount = signal(0);
+  private readonly bag = inject(ShoppingBag);
+  protected readonly bagCount = this.bag.count;
 
   protected readonly products: Product[] = [
     {
@@ -129,7 +131,7 @@ export class Marketplace {
     }
   }
 
-  protected addToBag(): void {
-    this.bagCount.update((count) => count + 1);
+  protected addToBag(product: Product): void {
+    this.bag.add(product);
   }
 }

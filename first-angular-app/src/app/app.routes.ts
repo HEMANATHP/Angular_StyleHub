@@ -13,6 +13,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/services/services').then((module) => module.Services),
   },
   {
+    path: 'shops',
+    title: 'Find shops | StyleHub',
+    loadComponent: () => import('./pages/shops/shops').then((module) => module.Shops),
+  },
+  {
     path: 'stylists',
     title: 'Stylists | StyleHub',
     loadComponent: () => import('./pages/stylists/stylists').then((module) => module.Stylists),
@@ -22,5 +27,10 @@ export const routes: Routes = [
     title: 'Marketplace | StyleHub',
     loadComponent: () =>
       import('./pages/marketplace/marketplace').then((module) => module.Marketplace),
+  },
+  {
+    path: 'bookings',
+    title: 'My bookings | StyleHub',
+    loadComponent: () => import('./pages/bookings/bookings').then((module) => module.Bookings),
   },
 ];

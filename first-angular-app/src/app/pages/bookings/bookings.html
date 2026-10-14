@@ -1,0 +1,91 @@
+<section class="bookings-page" aria-labelledby="bookings-heading">
+  <header class="page-heading">
+    <div>
+      <p class="eyebrow">My bookings</p>
+      <h1 id="bookings-heading">Your appointments, all in one place.</h1>
+      <p class="intro">
+        Keep track of your next visit and look back at your grooming appointments.
+      </p>
+    </div>
+    <a routerLink="/services" class="services-link">Explore services</a>
+  </header>
+
+  <p class="sample-note">
+    Sample appointments for preview. New bookings and changes are not submitted to shops.
+  </p>
+
+  <div class="booking-summary" aria-label="Appointment summary">
+    <div class="summary-card">
+      <strong>{{ upcomingCount }}</strong>
+      <span>Upcoming appointments</span>
+    </div>
+    <div class="summary-card">
+      <strong>{{ completedCount }}</strong>
+      <span>Completed visits</span>
+    </div>
+  </div>
+
+  <div class="booking-filters" role="group" aria-label="Filter appointments">
+    @for (filter of filters; track filter) {
+      <button
+        type="button"
+        [class.selected]="selectedFilter() === filter"
+        [attr.aria-pressed]="selectedFilter() === filter"
+        (click)="selectFilter(filter)"
+      >
+        {{ filter }}
+      </button>
+    }
+  </div>
+
+  <p class="result-count" aria-live="polite">
+    Showing {{ filteredBookings().length }}
+    {{ filteredBookings().length === 1 ? 'appointment' : 'appointments' }}
+  </p>
+
+  <div class="booking-list">
+    @for (booking of filteredBookings(); track booking.id) {
+      <article class="booking-card" [attr.aria-labelledby]="booking.id">
+        <div class="booking-heading">
+          <div>
+            <p class="booking-reference">{{ booking.id }}</p>
+            <h2 [id]="booking.id">{{ booking.service }}</h2>
+          </div>
+          <span class="status" [class.completed]="booking.status === 'Completed'">{{
+            booking.status
+          }}</span>
+        </div>
+
+        <p class="shop-name">{{ booking.shop }} &middot; {{ booking.city }}</p>
+        <dl class="booking-details">
+          <div>
+            <dt>Date</dt>
+            <dd>
+              <time [attr.datetime]="booking.date">{{
+                booking.date | date: 'EEE, d MMM y' : 'UTC'
+              }}</time>
+            </dd>
+          </div>
+          <div>
+            <dt>Time</dt>
+            <dd>{{ booking.time }} <span class="time-note">(shop local time)</span></dd>
+          </div>
+          <div>
+            <dt>Stylist</dt>
+            <dd>{{ booking.stylist }}</dd>
+          </div>
+          <div>
+            <dt>Service price</dt>
+            <dd>{{ booking.price | currency: 'USD' : 'symbol' : '1.0-0' }}</dd>
+          </div>
+        </dl>
+      </article>
+    } @empty {
+      <div class="empty-state">
+        <h2>No appointments to show</h2>
+        <p>Choose another filter or explore our grooming services.</p>
+        <a routerLink="/services" class="text-link">Explore services</a>
+      </div>
+    }
+  </div>
+</section>

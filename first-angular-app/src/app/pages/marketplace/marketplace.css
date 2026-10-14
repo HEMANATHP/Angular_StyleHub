@@ -80,7 +80,8 @@ h1 {
   position: relative;
   min-height: 390px;
   overflow: hidden;
-  background: radial-gradient(ellipse at 48% 53%, #f6d8b4 0 12%, transparent 12.5%),
+  background:
+    radial-gradient(ellipse at 48% 53%, #f6d8b4 0 12%, transparent 12.5%),
     linear-gradient(145deg, #dfad82, #bd7659 78%);
 }
 
@@ -115,7 +116,7 @@ h1 {
   top: -23px;
   border-radius: 7px 7px 3px 3px;
   background: #493b31;
-  content: "";
+  content: '';
 }
 
 .hero-jar {
@@ -137,7 +138,7 @@ h1 {
   top: -14px;
   border-radius: 5px;
   background: #6f5e49;
-  content: "";
+  content: '';
 }
 
 .benefit-row {
@@ -164,7 +165,7 @@ h1 {
 }
 
 .product-section {
-  scroll-margin-top: 32px;
+  scroll-margin-top: 120px;
 }
 
 .section-heading {
@@ -276,7 +277,7 @@ h1 {
 }
 
 .search-box input::placeholder {
-  color: #8a857c;
+  color: #706b63;
 }
 
 .visually-hidden {
@@ -316,7 +317,8 @@ h1 {
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: radial-gradient(ellipse at 50% 83%, rgba(68, 54, 40, 0.14), transparent 38%),
+  background:
+    radial-gradient(ellipse at 50% 83%, rgba(68, 54, 40, 0.14), transparent 38%),
     linear-gradient(145deg, color-mix(in srgb, var(--product-tone) 55%, white), var(--product-tone));
 }
 
@@ -352,7 +354,13 @@ h1 {
   place-items: center;
   border: 1px solid rgba(61, 49, 37, 0.12);
   border-radius: 18px 18px 23px 23px;
-  background: linear-gradient(90deg, rgba(89, 75, 57, 0.12), rgba(255, 255, 255, 0.7) 48%, rgba(89, 75, 57, 0.12)),
+  background:
+    linear-gradient(
+      90deg,
+      rgba(89, 75, 57, 0.12),
+      rgba(255, 255, 255, 0.7) 48%,
+      rgba(89, 75, 57, 0.12)
+    ),
     var(--product-tone);
   box-shadow: 0 14px 25px rgba(57, 44, 31, 0.16);
   transform: rotate(-3deg);
@@ -457,7 +465,7 @@ h1 {
 
 .review-count {
   margin-left: 4px;
-  color: #8a857c;
+  color: #706b63;
 }
 
 .product-footer {
@@ -486,7 +494,9 @@ h1 {
   cursor: pointer;
   font-size: 0.82rem;
   font-weight: 700;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .add-button:hover {
@@ -522,7 +532,7 @@ h1 {
 
 .sample-note {
   margin: 22px 0 0;
-  color: #807a70;
+  color: #706b63;
   font-size: 0.82rem;
 }
 
