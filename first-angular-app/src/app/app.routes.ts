@@ -18,6 +18,12 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/shops/shops').then((module) => module.Shops),
   },
   {
+    path: 'shops/:shopId',
+    title: 'Shop details | StyleHub',
+    loadComponent: () =>
+      import('./pages/shops/shop-details/shop-details').then((module) => module.ShopDetails),
+  },
+  {
     path: 'stylists',
     title: 'Stylists | StyleHub',
     loadComponent: () => import('./pages/stylists/stylists').then((module) => module.Stylists),

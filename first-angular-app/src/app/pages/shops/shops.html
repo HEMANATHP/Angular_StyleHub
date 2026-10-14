@@ -36,14 +36,22 @@
 
           <h3>Popular services</h3>
           <ul class="service-list">
-            @for (service of shop.services; track service) {
-              <li>{{ service }}</li>
+            @for (service of shop.services; track service.name) {
+              <li>{{ service.name }}</li>
             }
           </ul>
 
           <div class="shop-footer">
-            <p>Services from <strong>${{ shop.startingPrice }}</strong></p>
-            <span class="details-note">Details coming soon</span>
+            <p>
+              Services from <strong>${{ shop.startingPrice }}</strong>
+            </p>
+            <a
+              class="view-shop"
+              [routerLink]="['/shops', shop.id]"
+              [attr.aria-label]="'View ' + shop.name"
+            >
+              View shop
+            </a>
           </div>
         </div>
       </article>
