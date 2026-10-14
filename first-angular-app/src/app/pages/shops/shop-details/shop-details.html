@@ -1,0 +1,61 @@
+<section class="shop-details-page">
+  <a routerLink="/shops" class="back-link">Back to shops</a>
+
+  @if (shop(); as currentShop) {
+    <header class="shop-hero" [class]="'shop-hero shop-hero--' + currentShop.theme">
+      <div>
+        <p class="eyebrow">{{ currentShop.category }}</p>
+        <h1>{{ currentShop.name }}</h1>
+        <p class="location">{{ currentShop.city }}</p>
+        <p class="description">{{ currentShop.description }}</p>
+        <p class="rating">
+          {{ currentShop.rating }} out of 5 &middot; {{ currentShop.reviewCount }} reviews
+        </p>
+      </div>
+      <div class="price-summary">
+        <span>Services from</span>
+        <strong>{{ currentShop.startingPrice | currency: 'USD' : 'symbol' : '1.0-0' }}</strong>
+      </div>
+    </header>
+
+    <p class="sample-note">
+      Sample shop details. Prices and stylist profiles are examples; live availability is coming
+      soon.
+    </p>
+
+    <section class="details-section" aria-labelledby="shop-services-heading">
+      <h2 id="shop-services-heading">Services &amp; prices</h2>
+      <div class="service-grid">
+        @for (service of currentShop.services; track service.name) {
+          <article class="service-card">
+            <h3>{{ service.name }}</h3>
+            <p>{{ service.durationMinutes }} min</p>
+            <strong>{{ service.price | currency: 'USD' : 'symbol' : '1.0-0' }}</strong>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="details-section" aria-labelledby="shop-stylists-heading">
+      <h2 id="shop-stylists-heading">Meet the stylists</h2>
+      <div class="stylist-grid">
+        @for (stylist of currentShop.stylists; track stylist.name) {
+          <article class="stylist-card">
+            <h3>{{ stylist.name }}</h3>
+            <p class="specialties-label">Specialties</p>
+            <ul class="specialties">
+              @for (specialty of stylist.specialties; track specialty) {
+                <li>{{ specialty }}</li>
+              }
+            </ul>
+          </article>
+        }
+      </div>
+    </section>
+  } @else {
+    <div class="not-found">
+      <h1>Shop not found</h1>
+      <p>We couldn't find that shop. Browse the shop listings to choose another one.</p>
+    </div>
+  }
+</section>

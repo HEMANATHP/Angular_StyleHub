@@ -16,7 +16,8 @@
   text-underline-offset: 4px;
 }
 
-.back-link:focus-visible {
+.back-link:focus-visible,
+.view-shop:focus-visible {
   outline: 3px solid #9a3412;
   outline-offset: 4px;
 }
@@ -215,10 +216,15 @@ h1 {
   font-size: 1.08rem;
 }
 
-.details-note {
-  color: #777168;
-  font-size: 0.78rem;
-  text-align: right;
+.view-shop {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #111827;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
 }
 
 @media (max-width: 700px) {
@@ -239,9 +245,5 @@ h1 {
   .shop-footer {
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .details-note {
-    text-align: left;
   }
 }
