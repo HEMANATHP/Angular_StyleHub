@@ -1,5 +1,7 @@
 <div class="page-shell">
-  <a class="skip-link" href="#page-content">Skip to main content</a>
+  <a class="skip-link" href="#page-content" (click)="skipToContent($event, pageContent)">
+    Skip to main content
+  </a>
 
   <header class="topbar" (keydown.escape)="closeMobileMenu()">
     <a class="brand-wrap" routerLink="/" aria-label="StyleHub home" (click)="closeMobileMenu()">
@@ -46,6 +48,14 @@
         >Services</a
       >
       <a
+        routerLink="/shops"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="nav-link"
+        (click)="closeMobileMenu()"
+        >Shops</a
+      >
+      <a
         routerLink="/stylists"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
@@ -61,7 +71,14 @@
         (click)="closeMobileMenu()"
         >Marketplace</a
       >
-      <span class="upcoming-page" title="Coming soon">Bookings</span>
+      <a
+        routerLink="/bookings"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="nav-link"
+        (click)="closeMobileMenu()"
+        >Bookings</a
+      >
       <button
         class="primary-button mobile-book-button"
         type="button"
@@ -75,10 +92,6 @@
       Book now
     </button>
   </header>
-
-  @if (bookingNotice()) {
-    <p class="booking-notice" role="status">{{ bookingNotice() }}</p>
-  }
 
   <main id="page-content" #pageContent tabindex="-1">
     <router-outlet (activate)="onRouteActivated(pageContent)" />

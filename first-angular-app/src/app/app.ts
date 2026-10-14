@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +8,11 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly bookingNotice = signal('');
-  protected readonly upcomingPages = ['Marketplace', 'Bookings'];
+  private readonly router = inject(Router);
   protected readonly mobileMenuOpen = signal(false);
 
   protected bookNow(): void {
-    this.bookingNotice.set('Online booking is coming soon. Explore our featured services below!');
+    void this.router.navigateByUrl('/bookings');
   }
 
   protected toggleMobileMenu(): void {
@@ -22,6 +21,12 @@ export class App {
 
   protected closeMobileMenu(): void {
     this.mobileMenuOpen.set(false);
+  }
+
+  protected skipToContent(event: Event, pageContent: HTMLElement): void {
+    event.preventDefault();
+    this.closeMobileMenu();
+    pageContent.focus();
   }
 
   protected onRouteActivated(pageContent: HTMLElement): void {
