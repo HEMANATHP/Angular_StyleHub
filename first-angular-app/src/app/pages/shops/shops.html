@@ -15,9 +15,11 @@
   <div class="shop-grid">
     @for (shop of shops; track shop.id) {
       <article class="shop-card">
-        <div class="shop-art" [class]="'shop-art shop-art--' + shop.theme" aria-hidden="true">
-          <span class="shop-art-mark">{{ shop.initials }}</span>
-          <span class="shop-art-caption">{{ shop.category }}</span>
+        <div class="shop-art-frame">
+          <div class="shop-art" [class]="'shop-art shop-art--' + shop.theme" aria-hidden="true">
+            <span class="shop-art-mark">{{ shop.initials }}</span>
+            <span class="shop-art-caption">{{ shop.category }}</span>
+          </div>
         </div>
 
         <div class="shop-content">
@@ -32,14 +34,18 @@
           </div>
 
           <p class="review-count">{{ shop.reviewCount }} reviews</p>
-          <p class="shop-description">{{ shop.description }}</p>
+          <div class="shop-preview-area">
+            <p class="shop-description">{{ shop.description }}</p>
 
-          <h3>Popular services</h3>
-          <ul class="service-list">
-            @for (service of shop.services; track service.name) {
-              <li>{{ service.name }}</li>
-            }
-          </ul>
+            <div class="shop-preview">
+              <h3>Popular services</h3>
+              <ul class="service-list">
+                @for (service of shop.services; track service.name) {
+                  <li>{{ service.name }}</li>
+                }
+              </ul>
+            </div>
+          </div>
 
           <div class="shop-footer">
             <p>

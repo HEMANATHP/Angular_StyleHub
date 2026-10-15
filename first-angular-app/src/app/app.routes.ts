@@ -39,4 +39,9 @@ export const routes: Routes = [
     title: 'My bookings | StyleHub',
     loadComponent: () => import('./pages/bookings/bookings').then((module) => module.Bookings),
   },
+  {
+    path: 'login',
+    title: 'Sign in | StyleHub',
+    loadComponent: () => import('./pages/login/login').then((module) => module.Login),
+  },
 ];

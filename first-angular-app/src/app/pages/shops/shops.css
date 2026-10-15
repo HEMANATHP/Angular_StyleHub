@@ -67,11 +67,18 @@ h1 {
 }
 
 .shop-card {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
   overflow: hidden;
   border: 1px solid #e5e7eb;
   border-radius: 24px;
   background: white;
+}
+
+.shop-art-frame {
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 .shop-art {
@@ -123,7 +130,14 @@ h1 {
 }
 
 .shop-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   padding: 22px 24px 20px;
+}
+
+.shop-preview-area {
+  flex: 1;
 }
 
 .shop-title-row {
@@ -227,6 +241,89 @@ h1 {
   text-decoration: none;
 }
 
+/* Reserve both text layers in the same grid cell so revealing services never resizes a card. */
+@media (hover: hover) and (pointer: fine) and (min-width: 701px) {
+  .shop-card {
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .shop-art {
+    transition: transform 180ms ease;
+  }
+
+  .shop-preview-area {
+    display: grid;
+  }
+
+  .shop-description,
+  .shop-preview {
+    grid-area: 1 / 1;
+    align-self: center;
+    min-width: 0;
+    transition: opacity 180ms ease;
+  }
+
+  .shop-description {
+    margin: 0;
+  }
+
+  .shop-preview {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .shop-card:hover,
+  .shop-card:focus-within {
+    transform: translateY(-3px);
+    border-color: #c59f8a;
+    box-shadow: 0 10px 24px rgba(17, 24, 39, 0.1);
+  }
+
+  .shop-card:hover .shop-art,
+  .shop-card:focus-within .shop-art {
+    transform: scale(1.025);
+  }
+
+  .shop-card:hover .shop-description,
+  .shop-card:focus-within .shop-description {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .shop-card:hover .shop-preview,
+  .shop-card:focus-within .shop-preview {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.shop-card:focus-within {
+  border-color: #9a3412;
+}
+
+/* Touch-capable devices keep both sections readable, even when a mouse is also connected. */
+@media (any-pointer: coarse) {
+  .shop-preview-area {
+    display: block;
+  }
+
+  .shop-card .shop-description,
+  .shop-card:hover .shop-description,
+  .shop-card:focus-within .shop-description {
+    margin: 0 0 18px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .shop-card .shop-preview {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
 @media (max-width: 700px) {
   .shops-page {
     padding-top: 28px;
@@ -245,5 +342,21 @@ h1 {
   .shop-footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shop-card,
+  .shop-card .shop-art,
+  .shop-description,
+  .shop-preview {
+    transition: none;
+  }
+
+  .shop-card:hover,
+  .shop-card:focus-within,
+  .shop-card:hover .shop-art,
+  .shop-card:focus-within .shop-art {
+    transform: none;
   }
 }
