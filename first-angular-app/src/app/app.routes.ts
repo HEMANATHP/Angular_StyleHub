@@ -44,4 +44,9 @@ export const routes: Routes = [
     title: 'Sign in | StyleHub',
     loadComponent: () => import('./pages/login/login').then((module) => module.Login),
   },
+  {
+    path: 'register',
+    title: 'Create account | StyleHub',
+    loadComponent: () => import('./pages/register/register').then((module) => module.Register),
+  },
 ];
