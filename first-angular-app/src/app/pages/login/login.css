@@ -89,6 +89,39 @@ h1 {
   outline: 3px solid rgba(154, 52, 18, 0.18);
 }
 
+.password-input {
+  position: relative;
+  min-width: 0;
+}
+
+.password-input input {
+  min-width: 0;
+  padding-right: 84px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  min-width: 64px;
+  min-height: 40px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #fff7ed;
+  color: #9a3412;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.password-toggle:focus-visible {
+  outline: 3px solid #9a3412;
+  outline-offset: 2px;
+}
+
 .sign-in-button {
   min-height: 48px;
   margin-top: 4px;
@@ -128,9 +161,15 @@ h1 {
   font-size: 0.88rem;
 }
 
-.account-note span {
+.account-note a {
   color: #9a3412;
   font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.account-note a:focus-visible {
+  outline: 3px solid #9a3412;
+  outline-offset: 3px;
 }
 
 .login-aside {
